@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest>
+
+<!-- Set up remotes -->
+<remote fetch="https://github.com/sel4" name="seL4"/>
+<remote fetch="https://github.com/sel4proj" name="sel4proj"/>
+<remote fetch="https://github.com/xurtis" name="xurtis"/>
+
+<!-- Set defaults -->
+<default revision="master" remote="seL4" />
+
+<!-- The Rust demo project -->
+<project name="sel4-rust-demo.git" remote="xurtis" path="projects/rust-demo">
+	<linkfile src="easy-settings.cmake" dest="easy-settings.cmake"/>
+</project>
+
+<!-- The Rust build tools -->
+<project name="sel4-rust-tools.git" remote="xurtis" path="tools/rust"/>
+
+<!-- Minimal C-style runtime -->
+<project name="sel4runtime.git" remote="sel4proj" path="projects/sel4runtime"/>
+
+<!-- seL4 build tools -->
+<project name="seL4_tools.git" path="tools/seL4">
+	<linkfile src="cmake-tool/init-build.sh" dest="init-build.sh"/>
+  <linkfile src="cmake-tool/griddle" dest="griddle"/>
+</project>
+<project name="riscv-pk" remote="sel4proj" revision="fix-32bit" path="tools/riscv-pk"/>
+
+<!-- Kernel -->
+<project name="seL4.git" path="kernel"/>
+
+</manifest>
